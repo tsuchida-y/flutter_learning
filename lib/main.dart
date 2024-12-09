@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/next_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,14 +31,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
 
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,21 +44,24 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child:  OutlinedButton(
-          child:Text("次へ"),
-          onPressed:(){
-            Navigator.push(
+          child:const Text("次へ"),
+          onPressed:()async{
+            final result = await Navigator.push(
               context, 
               MaterialPageRoute(
-                builder: (context) => const NextPage()
+                builder: (context) {
+                return NextPage("あ");
+                },
                 ),
             );
+            print(result);
           }
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: (){}
+        // tooltip: 'Increment',
+        //
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
