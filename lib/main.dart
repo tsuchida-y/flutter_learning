@@ -43,26 +43,27 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child:  OutlinedButton(
-          child:const Text("次へ"),
-          onPressed:()async{
-            final result = await Navigator.push(
-              context, 
-              MaterialPageRoute(
-                builder: (context) {
-                return NextPage("あ");
-                },
-                ),
-            );
-            print(result);
-          }
+        child:Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.print),
+            Image.asset('images/test_nyudo.jpg'),
+            OutlinedButton(
+              child:const Text("次へ"),
+              onPressed:(){
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(
+                    builder: (context) {
+                    return const NextPage("送る値");
+                    },
+                    ),
+                );
+              }
+            ),
+          ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){}
-        // tooltip: 'Increment',
-        //
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class NextPage extends StatelessWidget{
-  NextPage(this.name);//ネクストページに来るときはnameを入れるというルールを作る
+  const NextPage(this.name, {super.key});//ネクストページに来るときはnameを入れるというルールを作る
   final String name;//値を受け取るための変数を作る
 @override
 Widget build(BuildContext context){
@@ -20,7 +20,7 @@ Widget build(BuildContext context){
           Text(name),
           Center(
             child:OutlinedButton(
-              child:Text("戻る"),
+              child:const Text("戻る"),
               onPressed:(){
                 Navigator.pop(context);
               }
