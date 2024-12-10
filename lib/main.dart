@@ -33,9 +33,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
 
-  String name = '';
-    final myController = TextEditingController();
 
+final items = List<String>.generate(5, (i) => "Item $i");
   @override
   Widget build(BuildContext context) {
 
@@ -46,31 +45,16 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         width: double.infinity,
-        child: Column(
-          children: [
-            TextField(
-                decoration: InputDecoration(
-                hintText: '名前',
-              ),
-              onChanged: (text) {
-                // TODO: ここで取得したtextを使う
-                name = text;
-              },
-            ),
-            TextField(
-                decoration: InputDecoration(
-                hintText: '趣味',
-              ),
-            ),
-            OutlinedButton(
-              child: Text('新規登録'),
-              onPressed: () {
-                final hobbyText = myController.text;
-              },
-            ),
-          ]
-      ),
-    ),
+        child:ListView.builder( 
+          itemCount:items.length,
+          itemBuilder:(context,index){
+            return ListTile(
+              title:Text('${items[index]}'),
+            );
+          }
+
+        ),
+        ),
     );
   }
 }
