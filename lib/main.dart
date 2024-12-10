@@ -46,6 +46,15 @@ class _MyHomePageState extends State<MyHomePage> {
         child:Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Text(
+              "つちださん",
+              style:TextStyle(
+                fontSize:30,
+                color:Colors.green,
+                fontWeight:FontWeight.bold,
+                decoration: TextDecoration.underline,
+              )),
+            const Text("ユートさん"),
             const Icon(Icons.print),
             Image.asset('images/test_nyudo.jpg'),
             OutlinedButton(
