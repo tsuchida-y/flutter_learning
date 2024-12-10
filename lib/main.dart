@@ -33,6 +33,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
 
+  String name = '';
+    final myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,37 +44,33 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
-        child:Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: Container(
+        width: double.infinity,
+        child: Column(
           children: [
-            const Text(
-              "つちださん",
-              style:TextStyle(
-                fontSize:30,
-                color:Colors.green,
-                fontWeight:FontWeight.bold,
-                decoration: TextDecoration.underline,
-              )),
-            const Text("ユートさん"),
-            const Icon(Icons.print),
-            Image.asset('images/test_nyudo.jpg'),
-            OutlinedButton(
-              child:const Text("次へ"),
-              onPressed:(){
-                Navigator.push(
-                  context, 
-                  MaterialPageRoute(
-                    builder: (context) {
-                    return const NextPage("送る値");
-                    },
-                    ),
-                );
-              }
+            TextField(
+                decoration: InputDecoration(
+                hintText: '名前',
+              ),
+              onChanged: (text) {
+                // TODO: ここで取得したtextを使う
+                name = text;
+              },
             ),
-          ],
-        ),
+            TextField(
+                decoration: InputDecoration(
+                hintText: '趣味',
+              ),
+            ),
+            OutlinedButton(
+              child: Text('新規登録'),
+              onPressed: () {
+                final hobbyText = myController.text;
+              },
+            ),
+          ]
       ),
+    ),
     );
   }
 }
